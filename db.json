@@ -1,0 +1,46 @@
+{
+  "products": [
+    {
+      "productName": "Sofa",
+      "productPrice": "2000$",
+      "productImage": "https://i.pinimg.com/564x/fa/d1/e7/fad1e7d02cdd2481bf7d23e737892f90.jpg",
+      "productAddres": "Asia Mall",
+      "id": 1
+    },
+    {
+      "productName": "Sofa",
+      "productPrice": "3200$",
+      "productImage": "https://i.pinimg.com/564x/ae/2b/35/ae2b35e9111464650e979c128be68419.jpg",
+      "productAddres": "Asia Mall",
+      "id": 2
+    },
+    {
+      "productName": "Living room design",
+      "productPrice": "5000$",
+      "productImage": "https://i.pinimg.com/564x/6a/5d/bb/6a5dbbe6634c4465ec8af4c4e089f569.jpg",
+      "productAddres": "Asia Mall",
+      "id": 3
+    },
+    {
+      "productName": "Table for work",
+      "productPrice": "300$",
+      "productImage": "https://i.pinimg.com/564x/c5/ef/1a/c5ef1a961f50f8b95aad2192cc67f403.jpg",
+      "productAddres": "Asia Mall",
+      "id": 4
+    },
+    {
+      "productName": "Wardrobe",
+      "productPrice": "2500$",
+      "productImage": "https://i.pinimg.com/564x/8e/f9/f4/8ef9f439ced9bd1700b63c5e23606441.jpg",
+      "productAddres": "Asia Mall",
+      "id": 5
+    },
+    {
+      "productName": "Home office",
+      "productPrice": "4800$",
+      "productImage": "https://i.pinimg.com/564x/31/a0/33/31a03345b4db391cf66966c3774aef52.jpg",
+      "productAddres": "Asia Mall",
+      "id": 6
+    }
+  ]
+}

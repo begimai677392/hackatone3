@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- navbar start -->
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <img src="./images/logo_CH.jpg" alt="logo" />
+        <span>CozyHome</span>
+      </div>
+      <ul class="navbar_links">
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">SHOP</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">CONTACT</a></li>
+      </ul>
+      <div class="navbar-icons">
+        <a href="#"
+          ><img
+            id="registrationIcon"
+            src="./images/icon-registration.svg"
+            alt=""
+        /></a>
+        <a href="#"
+          ><img id="SearchIcon" src="./images/icons_search.svg" alt=""
+        /></a>
+        <input type="text" id="searchInput" placeholder="Search..." />
+        <a href="#"><img src="./images/icons_heart.svg" alt="" /></a>
+        <a href="#"><img src="./images/icon-basket.svg" alt="" /></a>
+      </div>
+    </nav>
+    <!-- navbar finish -->
+    <!-- main start -->
+    <div class="bg">
+      <div class="container">
+        <span>New Arrival</span>
+        <h1>Discover Our New Collection</h1>
+        <p>
+          We love the crafted look and feel of the dinnerware series. Its earthy
+          tones and warm, tactile feel are perfect for any occasion. Pair it
+          with hand-embroidered table.
+        </p>
+        <div class="buttons-container">
+          <button class="btnBuy">Buy Now</button>
+          <button class="btnAdd">Add Product</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="addProductModal">
+      <div class="modal-content">
+        <!-- Здесь размещается форма для ввода информации о продукте -->
+        <!-- Например: название, цена, изображение, адрес и т.д. -->
+        <span class="close">&times;</span>
+        <h2>Add new product</h2>
+        <div class="modal-inputs">
+          <input type="text" id="inpName" placeholder="Product Name" />
+          <input type="text" id="inpPrice" placeholder="Product Price" />
+          <input type="text" id="inpImage" placeholder="Product Image URL" />
+          <input type="text" id="inpAddress" placeholder="Product Address" />
+        </div>
+        <button class="addBtn">ADD</button>
+      </div>
+    </div>
+    <!-- main finish -->
+
+    <!-- slides start -->
+    <section class="home" id="home">
+      <div class="sliders-container">
+        <div class="slide">
+          <div class="content">
+            <h3>Dining Room</h3>
+            <span
+              >CozyHome online shop is an opportunity to quickly buy kitchen
+              decor with delivery, affordable prices and a wide range.</span
+            >
+            <a href="#" class="btnBuy">Buy Now</a>
+          </div>
+          <div class="img">
+            <img src="./images/dining_room (2).jpg" alt="" />
+          </div>
+        </div>
+        <div class="slide">
+          <div class="content">
+            <h3>Bedroom</h3>
+            <span
+              >CozyHome online shop is an opportunity to quickly buy bedroom
+              decor with delivery, affordable prices and a wide range.</span
+            >
+            <a href="#" class="btnBuy">Buy Now</a>
+          </div>
+          <div class="img"><img src="./images/bedroom (2).jpg" alt="" /></div>
+        </div>
+        <div class="slide">
+          <div class="content">
+            <h3>Bathroom</h3>
+            <span
+              >CozyHome online shop is an opportunity to quickly buy bathroom
+              decor with delivery, affordable prices and a wide range.</span
+            >
+            <a href="#" class="btnBuy">Buy Now</a>
+          </div>
+          <div class="img"><img src="./images/Bathroom (2).jpg" alt="" /></div>
+        </div>
+
+        <div class="slide">
+          <div class="content">
+            <h3>Children's Room</h3>
+            <span
+              >CozyHome online shop is an opportunity to quickly buy Children's
+              Room decor with delivery, affordable prices and a wide
+              range.</span
+            >
+            <a href="#" class="btnBuy">Buy Now</a>
+          </div>
+          <div class="img"><img src="./images/Kids Room.jpg" alt="" /></div>
+        </div>
+      </div>
+      <div class="pagination">
+        <button class="prev-slide">Previous</button>
+        <button class="next-slide">Next</button>
+      </div>
+    </section>
+    <div id="registrationModal" class="modal3">
+      <div class="modal-content3">
+        <!-- Your registration form and content go here -->
+        <span class="close3" onclick="closeRegistrationModal()">&times;</span>
+
+        <!-- Add your registration form elements here -->
+      </div>
+      <!-- Add this form inside the modal-content div in your registration modal -->
+
+      <form id="registrationForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" required></textarea>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <!-- slides finish -->
+    <!-- SECTION PRODUCTS START -->
+    <section class="sectionProducts"></section>
+    <!-- SECTION PRODUCTS FINISH -->
+    <div id="editProductModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit Product</h2>
+        <div class="modal-inputs">
+          <input type="text" id="editInpName" placeholder="Product Name" />
+          <input type="text" id="editInpPrice" placeholder="Product Price" />
+          <input
+            type="text"
+            id="editInpImage"
+            placeholder="Product Image URL"
+          />
+          <input
+            type="text"
+            id="editInpAddress"
+            placeholder="Product Address"
+          />
+        </div>
+        <button id="editBtnSave">Save Changes</button>
+      </div>
+    </div>
+
+    <!-- EDIT Finish -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>
