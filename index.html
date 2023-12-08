@@ -27,10 +27,10 @@
         <span>CozyHome</span>
       </div>
       <ul class="navbar_links">
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">SHOP</a></li>
+        <li><a href="./index.html">HOME</a></li>
+        <li><a href="">SHOP</a></li>
         <li><a href="#">ABOUT</a></li>
-        <li><a href="#">CONTACT</a></li>
+        <li><a href="./index2.html">CONTACT</a></li>
       </ul>
       <div class="navbar-icons">
         <a href="#"
@@ -138,15 +138,11 @@
         <button class="next-slide">Next</button>
       </div>
     </section>
+    <!-- registration -->
     <div id="registrationModal" class="modal3">
       <div class="modal-content3">
-        <!-- Your registration form and content go here -->
         <span class="close3" onclick="closeRegistrationModal()">&times;</span>
-
-        <!-- Add your registration form elements here -->
       </div>
-      <!-- Add this form inside the modal-content div in your registration modal -->
-
       <form id="registrationForm">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required />
@@ -164,10 +160,9 @@
       </form>
     </div>
 
-    <!-- slides finish -->
     <!-- SECTION PRODUCTS START -->
     <section class="sectionProducts"></section>
-    <!-- SECTION PRODUCTS FINISH -->
+    <!-- cards edit -->
     <div id="editProductModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -189,8 +184,24 @@
         <button id="editBtnSave">Save Changes</button>
       </div>
     </div>
+    <!-- pagination2 -->
+    <div class="pagination-products">
+      <button class="prevBtn">Previous</button>
+      <button class="nextBtn">Next</button>
+    </div>
+    <!-- detalization -->
+    <div id="detailsModal" class="modal4">
+      <div class="modal-content4">
+        <span class="close4" id="closeModalBtn">&times;</span>
+        <div id="detailsModalBody">
+          <img src="" alt="" id="detailProductImage" />
+          <h2 id="detailProductName"></h2>
+          <span id="detailProductPrice"></span>
+          <p id="detailProductAddress"></p>
+        </div>
+      </div>
+    </div>
 
-    <!-- EDIT Finish -->
     <script src="./js/main.js"></script>
   </body>
 </html>

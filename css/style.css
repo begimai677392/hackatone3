@@ -279,6 +279,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-family: Poppins;
+  margin-bottom: 30px;
 }
 
 .prev-slide:hover,
@@ -475,11 +476,121 @@ button:hover {
 }
 #searchInput {
   display: none;
-  width: 100px;
+  width: 200px;
   padding: 10px;
   border: 1px solid gray;
 }
 
 #searchInput.active {
   display: block;
+}
+.section-4 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: papayawhip;
+  background-image: url(../images/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container5 {
+  width: 90%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.form {
+  width: 500px;
+  height: auto;
+
+  padding: 20px 20px 30px 30px;
+
+  background: linear-gradient(
+    109deg,
+    rgba(201, 201, 201, 0.563) 1.57%,
+    rgba(196, 196, 196, 0) 100%
+  );
+
+  border-radius: 27px;
+  border: 1px solid rgba(200, 153, 83, 0.516);
+  backdrop-filter: blur(30px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form h3 {
+  font-family: "Iceland";
+  font-size: 40px;
+  font-weight: 400;
+}
+
+form hr {
+  width: 30%;
+}
+/* section-4 finish */
+.pagination-products {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.prevBtn {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #b88e2f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Poppins;
+  margin-bottom: 30px;
+}
+.nextBtn {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #b88e2f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Poppins;
+  margin-bottom: 30px;
+}
+/* Style for the modal detail */
+.modal4 {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 400px;
+  width: 150px;
+  height: 90px;
+  margin-top: 400px;
+}
+
+.modal-content4 {
+  position: absolute;
+  top: 51%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  background-color: #f0efec;
+  padding: 19px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.close4 {
+  position: absolute;
+  top: 1px;
+  right: 9px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  border: none;
+  background-color: #b3995c;
 }

@@ -1,46 +1,6 @@
-// ! registation
 document.addEventListener("DOMContentLoaded", function () {
-  const registrationIcon = document.getElementById("registrationIcon");
-  registrationIcon.addEventListener("click", function (event) {
-    event.preventDefault();
-    alert("Registration logic goes here!");
-  });
-});
-function openRegistrationModal() {
-  const registrationModal = document.getElementById("registrationModal");
-  registrationModal.style.display = "block";
-}
-function closeRegistrationModal() {
-  const registrationModal = document.getElementById("registrationModal");
-  registrationModal.style.display = "none";
-}
-document.addEventListener("DOMContentLoaded", function () {
-  const registrationIcon = document.getElementById("registrationIcon");
-  registrationIcon.addEventListener("click", function (event) {
-    event.preventDefault();
-    openRegistrationModal();
-  });
-  const registrationForm = document.getElementById("registrationForm");
-  registrationForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const address = document.getElementById("address").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    console.log("Name:", name);
-    console.log("Address:", address);
-    console.log("Email:", email);
-    console.log("Phone:", phone);
-    localStorage.setItem("name", name);
-    localStorage.setItem("address", address);
-    localStorage.setItem("email", email);
-    localStorage.setItem("phone", phone);
-    closeRegistrationModal();
-  });
-});
-document.addEventListener("DOMContentLoaded", function () {
-  const API = "http://localhost:8001/products";
+  const API = "http://localhost:8002/products";
+  let data = [];
   let btnBuy = document.querySelector(".btnBuy");
   const addProductModal = document.getElementById("addProductModal");
   const sectionProducts = document.querySelector(".sectionProducts");
@@ -50,9 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const inpAddress = document.getElementById("inpAddress");
   const btnAdd = document.querySelector(".btnAdd");
   const slides = document.querySelectorAll(".slide");
+
   let currentSlide = 0;
+  let currentPage = 1;
+  let countPage = 1;
+  //Кнопки для пагинации
+  let prevBtn = document.querySelector(".prevBtn");
+  let nextBtn = document.querySelector(".nextBtn");
+  let searchValue = "";
   const prevButton = document.querySelector(".prev-slide");
   const nextButton = document.querySelector(".next-slide");
+  // detalization
+  const detailsContainer = document.getElementById("detailsModalBody");
   //!Main pagination=======================================
   // Скрыть все слайды
   function hideSlides() {
@@ -157,11 +126,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //!=============Read=======================
   async function readProducts() {
-    const response = await fetch(`${API}?q=${searchValue}`);
-    const data = await response.json(); //получения данных из db.json()
-    sectionProducts.innerHTML = ""; //очищааем наш тег section,чтобы не было дубликатов
-    data.forEach((item) => {
-      sectionProducts.innerHTML += `
+    try {
+      const response = await fetch(
+        `${API}?q=${searchValue}&_page=${currentPage}&_limit=3`
+      );
+      const data = await response.json(); //получения данных из db.json()
+      sectionProducts.innerHTML = ""; //очищааем наш тег section,чтобы не было дубликатов
+      data.forEach((item) => {
+        sectionProducts.innerHTML += `
       <div class="detailsCard card" style="width: 19rem">
       <img
         id="${item.id}"
@@ -175,19 +147,20 @@ document.addEventListener("DOMContentLoaded", function () {
         <p class="card-text">${item.productPrice}</p>
         <span class="card-text">${item.productAddres}</span>
         <div>
-    <button class="btn btn-outline-danger btnDelete" id="${item.id}">Удалить</button>
-    <button class="btn btn-outline-warning btnEdit" id="${item.id}" data-bs-toggle="modal" data-bs-target="#exampleModal">Изменить</button>
-    <button class="detailsCard btn btn btn-outline-warning">Details</button>
+    <button class="btn btn-outline-danger btnDelete" id="${item.id}">Delete</button>
+    <button class="btn btn-outline-warning btnEdit" id="${item.id}" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+    <button class="detailsCard btn btn btn-outline-warning" id="${item.id}">Details</button>
 </div>
       </div>
     </div>
   `;
-    });
+      });
+      pageFunc();
+    } catch (error) {
+      console.error("Ошибка при загрузке продуктов:", error);
+    }
   }
   readProducts();
-
-  //!REGISTRATION==================================================
-
   //!================DELETE===============
   document.addEventListener("click", (e) => {
     if (e.target.classList.contains("btnDelete")) {
@@ -225,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
           editInpImage.value = data.productImage;
           editInpAddress.value = data.productAddress;
           editBtnSave.setAttribute("data-id", data.id);
-          editProductModal.style.display = "block"; // Отображение модального окна при получении данных для редактирования
+          editProductModal.style.display = "block";
         })
         .catch((error) => {
           console.error("Ошибка при загрузке данных:", error);
@@ -272,27 +245,134 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   readProducts();
+  // !registration
+  const registrationIcon = document.getElementById("registrationIcon");
+  const registrationModal = document.getElementById("registrationModal");
+  const closeBtn3 = document.querySelector(".close3");
 
+  // Обработчик события для кнопки закрытия модального окна
+  closeBtn3.addEventListener("click", function () {
+    closeRegistrationModal();
+  });
+  registrationIcon.addEventListener("click", function (event) {
+    event.preventDefault();
+    alert("Registration logic goes here!");
+  });
+
+  function openRegistrationModal() {
+    registrationModal.style.display = "block";
+  }
+
+  function closeRegistrationModal() {
+    registrationModal.style.display = "none";
+  }
+
+  registrationIcon.addEventListener("click", function (event) {
+    event.preventDefault();
+    openRegistrationModal();
+  });
+
+  const registrationForm = document.getElementById("registrationForm");
+  registrationForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const address = document.getElementById("address").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+
+    localStorage.setItem("name", name);
+    localStorage.setItem("address", address);
+    localStorage.setItem("email", email);
+    localStorage.setItem("phone", phone);
+
+    closeRegistrationModal();
+  });
+
+  //!====================PAGINATION=======================
+  function pageFunc() {
+    fetch(`${API}?q=${searchValue}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        //записываем в переменную countPage = текушую страницу
+        countPage = Math.ceil(data.length / 3);
+      });
+  }
+  //
+  prevBtn.addEventListener("click", () => {
+    //проверяем на какой странице мы сейчас находимся
+    if (currentPage <= 1) return;
+    currentPage--;
+    readProducts();
+  });
+  nextBtn.addEventListener("click", () => {
+    if (currentPage >= countPage) return;
+    currentPage++;
+    readProducts();
+  });
   // ! search
-  let searchValue = "";
   const searchIcon = document.getElementById("SearchIcon");
   const searchInput = document.getElementById("searchInput");
 
   searchIcon.addEventListener("click", function () {
     searchInput.classList.toggle("active");
   });
-
   searchInput.addEventListener("keyup", function () {
     const searchValue = searchInput.value.toLowerCase();
-    // Perform search logic here
   });
   searchInput.addEventListener("input", (e) => {
-    // это строка добавляет слушатель событий для поля ввода в inpSearch
-    //он реагирует на событие input ,то есть каждый раз, когда пользователь что то вводит в  инпут.Внутри этого
-    // случателя событий есть стрелочная функция которая выполняется при каждом событии инпут. e.target.value
-    // содержит значение, введенное пользователем  в инпут.
-    currentPage = 1;
     searchValue = e.target.value.trim();
+    currentPage = 1; // Сбрасываем страницу при вводе нового запроса
     readProducts();
   });
+
+  //!==========details=====================
+
+  document.addEventListener("click", async (e) => {
+    if (e.target.classList.contains("detailsCard")) {
+      const productId = e.target.id;
+      const data = await fetchDetails(productId);
+      displayDetails(data);
+    }
+  });
+
+  document.getElementById("closeModalBtn").addEventListener("click", () => {
+    closeModal();
+  });
+
+  async function fetchDetails(id) {
+    try {
+      const response = await fetch(`${API}/${id}`);
+      if (!response.ok) {
+        throw new Error(`HTTP Error! Status ${response.status}`);
+      }
+      return response.json();
+    } catch (error) {
+      console.error("Error fetching details:", error);
+      return null;
+    }
+  }
+
+  function displayDetails(data) {
+    if (data) {
+      // Update modal content
+      detailsContainer.innerHTML = `
+        <span class="close4" id="closeModalBtn">&times;</span>
+        <img src="${data.productImage}" alt="" id="detailProductImage" />
+        <h2 id="detailProductName">${data.productName}</h2>
+        <span id="detailProductPrice">${data.productPrice}</span>
+        <p id="detailProductAddress">${data.productAddres}</p>
+      `;
+
+      document.getElementById("detailsModal").style.display = "block";
+    } else {
+      console.error("Details not available");
+    }
+  }
+  function closeModal() {
+    document.getElementById("detailsModal").style.display = "none";
+  }
+  closeModal();
 });
